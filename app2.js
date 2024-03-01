@@ -37,3 +37,41 @@ const myMath = {
 
 
 // start video 5
+// this and methods
+
+function getHypotenuse(a,b) {
+    return Math.sqrt(a ** 2 + b ** 2);
+}
+function getArea(a,b) {
+    return a * b / 2;
+}
+
+// let side1 = 4;
+// let side2 = 3;
+// const side3 = getHypotenuse(side1, side2);
+
+// const area = getArea(side1, side2);
+
+// instead of having to constantly having to reset the variables 
+// we can create a new object
+
+const rightTriangle = {
+    a: 9,
+    b: 12,
+    printThis: function() {
+        console.log(this);
+    },
+    getArea: function(){
+        return this.a * this.b / 2;
+    },
+    getHypotenuse: function() {
+        return Math.sqrt(this.a ** 2 + this.b ** 2);
+    }
+};
+// cannot use arrow functions here because this keyword behaves differently
+
+
+
+// start video 6
+// constructor functions and new
+
