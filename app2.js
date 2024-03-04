@@ -100,4 +100,21 @@ t2.getHypotenuse() // 15
 
 
 // start OPTIONAL video 7
+// breif intro to prototypes
+
+// same stuff as above just different variable names in the new video
+// uses same Traingle function as above as well
+Triangle(5, 7); // RETURNS UNDEFINED!
+// USING THE NEW OPERATOR!
+const tri1 = new Triangle(3, 4);
+tri1.getHypotenuse(); // 5
+const tri2 = new Triangle(9,12);
+tri2.getHypotenuse(); // 15
+
+
+// skipped for now
+// starting video 8
+
+
+
 
