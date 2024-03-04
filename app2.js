@@ -215,6 +215,7 @@
 
 class Triangle{
     constructor(a, b, c){
+        console.log("INSIDE TRIANGLE CONSTRUCTOR")
         for(let side of [a,b,c]){
             if (!Number.isFinite(side) || side <= 0) {
                 throw new Error("Invalid side: " + side);
@@ -228,7 +229,7 @@ class Triangle{
         console.log("HELLO FROM TRIANGLE");
     }
     display(){
-        console.log(`Triangle with the sides of ${this.a}, ${this.b}, and ${this.c}`);
+        return `Triangle with the sides of ${this.a}, ${this.b}, and ${this.c}`;
     }
     getArea(){
         // destructured instead of typing each a,b,c one out
@@ -243,15 +244,46 @@ class Triangle{
     }
 }
 
-const t1 = new Triangle(3, 4, 5)
-const t2 = new Triangle(5, 9, 10)
-const t3 = new Triangle(30, 40, 50)
-t3.getArea()  // 600
-t3.isBig()  // true
+// const t1 = new Triangle(3, 4, 5)
+// const t2 = new Triangle(5, 9, 10)
+// const t3 = new Triangle(30, 40, 50)
+// t3.getArea()  // 600
+// t3.isBig()  // true
 // const myTri = new Triangle(-3, 4, 5) commented out due to error
+
+
 
 
 
 // starting video 11
 // extends / inheritance & super
 
+class RightTriangle extends Triangle{
+    constructor(a, b, c){
+        // can get rid of duplicate methods and code to keep things concise with extends
+        // this runs first when righttriangle is called and then super calls the rest of the constructor from triangle
+        if(a * a + b * b !== c * c){
+            throw new Error('Invalid C side for right triangle')
+        }
+        console.log("INSIDE RIGHT TRIANGLE CONSTRUCTOR")
+        super(a,b,c);
+        // must pass in a,b,c or error, notice the order of the console logs of inside
+        // calls the constructor of the super class (whatever we are extending)
+        this.hypot = c;
+        // add in another property for righttriangle so we know which side is the hypot
+        // must call super constructor in derived class before before accesing 'this'
+    }
+    // can also add new methods that dont exist on triangle class
+    isRightTriangle(){
+        return true
+    }
+    // can also override existing methods on triangle
+    display(){
+        return 'Right ' + super.display();
+        // instead of typing the whole line out we can use super again to add
+        // what we want to the existing display() in triangle
+    }
+}
+
+const myRightTriangle = new RightTriangle(3,4,5)
+// new RightTriangle(3,4,6) // catches the error
