@@ -122,37 +122,37 @@
 // classes intro
 
 // dont need function parans () as it is an object
-class Triangle{
-    constructor(a, b, c){
-        // console.log('you made a new triangle')
-        // console.log(a, b, c);
-        // validating below
-        for(let side of [a,b,c]){
-            if (!Number.isFinite(side) || side <= 0) {
-                throw new Error("Invalid side: " + side);
-            }
-        }
-        // can do all of below with a loop instead of writing each one out
-        // if (!Number.isFinite(a) || a <= 0) {
-        //     throw new Error("Invalid a: " + a);
-        // }
-        // if (!Number.isFinite(b) || b <= 0) {
-        //     throw new Error("Invalid b: " + b);
-        // }
-        // if (!Number.isFinite(c) || c <= 0) {
-        //     throw new Error("Invalid c: " + c);
-        // }
-        this.a = a;
-        this.b = b;
-        this.c = c;
-    }
-    greet(){
-        console.log("HELLO FROM TRIANGLE");
-    }
-    display(){
-        console.log(`Triangle with the sides of ${this.a}, ${this.b}, and ${this.c}`);
-    }
-}
+// class Triangle{
+//     constructor(a, b, c){
+//         // console.log('you made a new triangle')
+//         // console.log(a, b, c);
+//         // validating below
+//         for(let side of [a,b,c]){
+//             if (!Number.isFinite(side) || side <= 0) {
+//                 throw new Error("Invalid side: " + side);
+//             }
+//         }
+//         // can do all of below with a loop instead of writing each one out
+//         // if (!Number.isFinite(a) || a <= 0) {
+//         //     throw new Error("Invalid a: " + a);
+//         // }
+//         // if (!Number.isFinite(b) || b <= 0) {
+//         //     throw new Error("Invalid b: " + b);
+//         // }
+//         // if (!Number.isFinite(c) || c <= 0) {
+//         //     throw new Error("Invalid c: " + c);
+//         // }
+//         this.a = a;
+//         this.b = b;
+//         this.c = c;
+//     }
+//     greet(){
+//         console.log("HELLO FROM TRIANGLE");
+//     }
+//     display(){
+//         console.log(`Triangle with the sides of ${this.a}, ${this.b}, and ${this.c}`);
+//     }
+// }
 // method greet is included in the below triangles as it was added to it above
 // when calling we are creating a new object based off the above template
 // const firstTri = new Triangle();
@@ -179,8 +179,8 @@ class Triangle{
 // that is automatically called, has to be named constructor
 // added to the class created above as Triangle
 
-const t1 = new Triangle(3, 4, 5)
-const t2 = new Triangle(9, 20, 50)
+// const t1 = new Triangle(3, 4, 5)
+// const t2 = new Triangle(9, 20, 50)
 
 // we can assign properties like we just did and
 // we can validate data like shown below, added to above class
@@ -203,7 +203,7 @@ const t2 = new Triangle(9, 20, 50)
 //     }
 // }
 
-const myTri = new Triangle(-3, 4, 5)
+// const myTri = new Triangle(-3, 4, 5)
 
 
 
@@ -211,3 +211,47 @@ const myTri = new Triangle(-3, 4, 5)
 
 // start video 10
 // adding methods
+// above code coppied below for readability
+
+class Triangle{
+    constructor(a, b, c){
+        for(let side of [a,b,c]){
+            if (!Number.isFinite(side) || side <= 0) {
+                throw new Error("Invalid side: " + side);
+            }
+        }
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+    greet(){
+        console.log("HELLO FROM TRIANGLE");
+    }
+    display(){
+        console.log(`Triangle with the sides of ${this.a}, ${this.b}, and ${this.c}`);
+    }
+    getArea(){
+        // destructured instead of typing each a,b,c one out
+        const {a,b,c} = this;
+        const s = (a + b + c) / 2;
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c))
+    }
+    isBig(){
+        // must add 'this' keyword to acces the method in this instance
+        // returns a true or false
+        return this.getArea() > 50;
+    }
+}
+
+const t1 = new Triangle(3, 4, 5)
+const t2 = new Triangle(5, 9, 10)
+const t3 = new Triangle(30, 40, 50)
+t3.getArea()  // 600
+t3.isBig()  // true
+// const myTri = new Triangle(-3, 4, 5) commented out due to error
+
+
+
+// starting video 11
+// extends / inheritance & super
+
