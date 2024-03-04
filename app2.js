@@ -96,3 +96,8 @@ t2.getHypotenuse() // 15
 
 // check documentation to see what new does in detail
 
+
+
+
+// start OPTIONAL video 7
+
